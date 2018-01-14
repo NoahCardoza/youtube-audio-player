@@ -1,6 +1,13 @@
 <template>
   <div>
-    <nuxt/>
+    <el-container>
+      <el-header>
+        <h1>YouTube Audio Player</h1>
+      </el-header>
+      <el-main>
+        <nuxt/>
+      </el-main>
+    </el-container>
   </div>
 </template>
 

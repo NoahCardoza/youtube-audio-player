@@ -1,8 +1,6 @@
 const R = require('ramda')
 const { GraphQLList, GraphQLString, GraphQLObjectType } = require('graphql');
-const axios = require('axios');
-const { youtube } = require('../config');
-
+const { YouTube } = require('../plugins/axios');
 
 const getOneProp = props => R.pipe(
   R.props(props),
@@ -16,13 +14,12 @@ const Field = (resolve, type = GraphQLString) => ({
 })
 
 const fetchResults = (q, type) =>
-  axios.get('https://content.googleapis.com/youtube/v3/search', {
+  YouTube.get('search', {
     params: {
         q,
         type,
         maxResults: 25,
         part: 'snippet',
-        key: youtube.key
       }
   }).then(R.prop('data'))
 
